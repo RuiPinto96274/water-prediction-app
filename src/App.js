@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useState } from "react";
 import { useForm } from "@mantine/form";
-import { Box, Button, NumberInput } from "@mantine/core";
+import { Button, NumberInput } from "@mantine/core";
 import axios from "axios";
 
 function App() {
@@ -18,16 +18,43 @@ function App() {
       turbidity: "3",
     },
     validate: {
-      ph: (value) => (value >= 0 && value <= 14 && value !== "" ? null : "ph must be between 0 and 14"),
-      hardness: (value) => (value >= 47 && value <= 320 && value !== "" ? null : "hardness must be between 47 and 320 mg/L"),
-      solids: (value) => (value > 720 && value <= 61220 && value !== "" ? null : "solids must be between 720 and 61220 ppm"),
-      chloramines: (value) => (value >= 0 && value <= 13 && value !== "" ? null : "chloramines must be between 0 and 13 ppm"),
-      sulfate: (value) => (value >= 180 && value <= 481 && value !== "" ? null : "sulfate must be between 180 and 481 mg/L"),
-      conductivity: (value) => (value >= 210 && value <= 753 && value !== "" ? null : "conductivity must be between 210 and 753 μS/cm"),
-      organic_carbon: (value) => (value >= 2 && value <= 28 && value !== "" ? null : "organic carbon must be between 2 and 28 mg/L"),
-      trihalomethanes: (value) => (value >= 8 && value <= 124 && value !== "" ? null : "trihalomethanes must be between 8 and 124 ppm"),
-      turbidity: (value) => (value >= 1 && value <= 7 && value !== "" ? null : "turbidity must be between 1 and 7 NTU"),
-    }
+      ph: (value) =>
+        value >= 0 && value <= 14 && value !== ""
+          ? null
+          : "ph must be between 0 and 14",
+      hardness: (value) =>
+        value >= 47 && value <= 320 && value !== ""
+          ? null
+          : "hardness must be between 47 and 320 mg/L",
+      solids: (value) =>
+        value > 720 && value <= 61220 && value !== ""
+          ? null
+          : "solids must be between 720 and 61220 ppm",
+      chloramines: (value) =>
+        value >= 0 && value <= 13 && value !== ""
+          ? null
+          : "chloramines must be between 0 and 13 ppm",
+      sulfate: (value) =>
+        value >= 180 && value <= 481 && value !== ""
+          ? null
+          : "sulfate must be between 180 and 481 mg/L",
+      conductivity: (value) =>
+        value >= 210 && value <= 753 && value !== ""
+          ? null
+          : "conductivity must be between 210 and 753 μS/cm",
+      organic_carbon: (value) =>
+        value >= 2 && value <= 28 && value !== ""
+          ? null
+          : "organic carbon must be between 2 and 28 mg/L",
+      trihalomethanes: (value) =>
+        value >= 8 && value <= 124 && value !== ""
+          ? null
+          : "trihalomethanes must be between 8 and 124 ppm",
+      turbidity: (value) =>
+        value >= 1 && value <= 7 && value !== ""
+          ? null
+          : "turbidity must be between 1 and 7 NTU",
+    },
   });
 
   const [predictionResult, setPredictionResult] = useState(null);
@@ -36,17 +63,17 @@ function App() {
     event.preventDefault();
     form.validate();
     if (!form.isValid()) {
-      console.error('Form is not valid');
+      console.error("Form is not valid");
       return;
     } else {
       try {
         const response = await axios.post(
           "http://127.0.0.1:5000/predict",
-          {...form.values},
+          { ...form.values },
           {
             headers: {
               "Content-Type": "application/json",
-              "Accept": "application/json",
+              Accept: "application/json",
             },
           }
         );
@@ -59,11 +86,11 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <Box sx={{ maxWidth: 300 }} mx="auto">
+      <main className="App-main">
+        <div className="box">
           <form onSubmit={form.onSubmit(console.log)}>
             <NumberInput
-              label="ph"
+              label="Ph"
               placeholder="ph"
               min={0}
               max={14}
@@ -73,8 +100,7 @@ function App() {
               {...form.getInputProps("ph")}
             />
             <NumberInput
-              mt="md"
-              label="hardness"
+              label="Hardness"
               placeholder="hardness"
               min={47}
               max={320}
@@ -84,8 +110,7 @@ function App() {
               {...form.getInputProps("hardness")}
             />
             <NumberInput
-              mt="md"
-              label="solids"
+              label="Solids"
               placeholder="solids"
               min={720}
               max={61220}
@@ -95,8 +120,7 @@ function App() {
               {...form.getInputProps("solids")}
             />
             <NumberInput
-              mt="md"
-              label="chloramines"
+              label="Chloramines"
               placeholder="chloramines"
               min={0}
               max={13}
@@ -106,8 +130,7 @@ function App() {
               {...form.getInputProps("chloramines")}
             />
             <NumberInput
-              mt="md"
-              label="sulfate"
+              label="Sulfate"
               placeholder="sulfate"
               min={180}
               max={481}
@@ -117,8 +140,7 @@ function App() {
               {...form.getInputProps("sulfate")}
             />
             <NumberInput
-              mt="md"
-              label="conductivity"
+              label="Conductivity"
               placeholder="conductivity"
               min={210}
               max={753}
@@ -128,8 +150,7 @@ function App() {
               {...form.getInputProps("conductivity")}
             />
             <NumberInput
-              mt="md"
-              label="organic carbon"
+              label="Organic Carbon"
               placeholder="organic carbon"
               min={2}
               max={28}
@@ -139,8 +160,7 @@ function App() {
               {...form.getInputProps("organic_carbon")}
             />
             <NumberInput
-              mt="md"
-              label="trihalomethanes"
+              label="Trihalomethanes"
               placeholder="trihalomethanes"
               min={8}
               max={124}
@@ -150,8 +170,7 @@ function App() {
               {...form.getInputProps("trihalomethanes")}
             />
             <NumberInput
-              mt="md"
-              label="turbidity"
+              label="Turbidity"
               placeholder="turbidity"
               min={1}
               max={7}
@@ -160,24 +179,21 @@ function App() {
               required
               {...form.getInputProps("turbidity")}
             />
-            <div>
-              <Button type="submit" onClick={handleSubmit}>
-                Predict
-              </Button>
-            </div>
+            <Button type="submit" onClick={handleSubmit}>
+              Predict
+            </Button>
           </form>
           {predictionResult !== null && (
-          <div>
-            {predictionResult === 1 ? (
-              <h1>Water is safe to drink!</h1>
-            ) : (
-              <h1>Water is not safe to drink!</h1>
-            )}
-          </div>
-        )}
-        </Box>
-
-      </header>
+            <div>
+              {predictionResult === 1 ? (
+                <h1 id="safe">Water is safe to drink!</h1>
+              ) : (
+                <h1 id="notsafe">Don't drink it!</h1>
+              )}
+            </div>
+          )}
+        </div>
+      </main>
     </div>
   );
 }

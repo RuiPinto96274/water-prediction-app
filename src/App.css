@@ -2,8 +2,11 @@
   text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
+.App-main {
+  background-image: url(/public/assets/matt-hardy-6ArTTluciuA-unsplash.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -11,16 +14,97 @@
   justify-content: center;
   font-size: medium;
   color: white;
+  width: 100%;
+
+  .box {
+    background-color: rgba(21, 14, 48, 0.8);
+    padding: 1% 3%;
+    border-radius: 20px;
+  }
+
+  .mantine-NumberInput-root {
+    width: 21rem;
+  }
 
   .mantine-NumberInput-error {
     color: red;
     font-size: small;
+    margin: 0;
+    margin-top: -0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .mantine-NumberInput-wrapper {
+    margin: 0;
+    min-width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .mantine-NumberInput-label {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 5px;
+    width: 100%;
   }
 
   .mantine-NumberInput-required {
-    color: red;
+    display: none;
   }
 
-  .mantine-NumberInput-root {
+  .mantine-NumberInput-input {
+    border-radius: 3px;
+    border-color: mediumseagreen;
+    outline: none !important;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .mantine-NumberInput-input:hover {
+    box-shadow: 0 0 0 0.1vw mediumseagreen;
+  }
+
+  .mantine-NumberInput-input:focus {
+    box-shadow: 0 0 0 0.15vw mediumseagreen;
+    outline: none !important;
+  }
+
+  .mantine-Button-root {
+    height: 1rem;
+    line-height: 0;
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    margin-top: 1rem;
+    border-color: transparent;
+  }
+
+  .mantine-Button-root:hover {
+    background-color: #23c483;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+  }
+
+  .mantine-Button-root:active {
+    transform: translateY(-1px);
+  }
+
+  #safe {
+    color: #23c483;
+  }
+
+  #notsafe {
+    color: red;
   }
 }
