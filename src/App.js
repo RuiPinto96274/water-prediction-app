@@ -68,7 +68,7 @@ function App() {
     } else {
       try {
         const response = await axios.post(
-          "http://127.0.0.1:5000/predict",
+          "https://ml-backend-flask.onrender.com/predict",
           { ...form.values },
           {
             headers: {
