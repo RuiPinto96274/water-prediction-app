@@ -68,7 +68,7 @@ function App() {
     } else {
       try {
         const response = await axios.post(
-          "https://backend-flask-production.up.railway.app/predict",
+          "https://backend-flask.up.railway.app/predict",
           { ...form.values },
           {
             headers: {
