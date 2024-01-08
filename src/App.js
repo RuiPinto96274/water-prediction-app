@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { useForm } from "@mantine/form";
 import { Button, NumberInput } from "@mantine/core";
 import axios from "axios";
+import { Github } from "react-bootstrap-icons";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
 function App() {
   const form = useForm({
@@ -73,7 +75,7 @@ function App() {
           {
             headers: {
               "Content-Type": "application/json",
-              "Accept": "application/json",
+              Accept: "application/json",
             },
           }
         );
@@ -83,6 +85,12 @@ function App() {
       }
     }
   };
+
+  const renderTooltip = (props) => (
+    <Tooltip id="tooltip" {...props}>
+      Go to github repository
+    </Tooltip>
+  );
 
   return (
     <div className="App">
@@ -179,7 +187,7 @@ function App() {
               required
               {...form.getInputProps("turbidity")}
             />
-            <Button type="submit" onClick={handleSubmit}>
+            <Button type="submit" onClick={handleSubmit} className="predictBtn">
               Predict
             </Button>
           </form>
@@ -192,6 +200,22 @@ function App() {
               )}
             </div>
           )}
+        </div>
+        <div className="btnContainer">
+          <OverlayTrigger
+            placement="left"
+            delay={{ show: 200, hide: 200 }}
+            overlay={renderTooltip}
+          >
+            <a
+              className="socialBtn"
+              href="https://github.com/RuiPinto96274/backend-flask"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Github className="iconSocial" />
+            </a>
+          </OverlayTrigger>
         </div>
       </main>
     </div>
